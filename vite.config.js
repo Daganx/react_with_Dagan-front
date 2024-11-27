@@ -8,7 +8,7 @@ export default defineConfig({
     host: true,
     proxy: {
       "/api": {
-        target: "http://localhost:5001", // URL de votre backend
+        target: "https://react-with-dagan-back.onrender.com/", // URL de votre backend
         changeOrigin: true,
       },
     },
