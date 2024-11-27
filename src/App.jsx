@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
-import Login from "./pages/Login";
+import LoginPage from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import IndexPage from "./pages/index";
 import ArticleDetail from "./components/articles/articleDetail/ArticleDetail";
@@ -18,7 +18,7 @@ export default function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<IndexPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/dashboard"
           element={
