@@ -1,0 +1,95 @@
+.banner {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.banner h2 {
+  margin: 0;
+  line-height: 1;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.banner h3 {
+  font-size: 1.4rem;
+  padding-left: 64px;
+  padding-right: 64px;
+  letter-spacing: -1px;
+}
+.banner-socials {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  margin-top: 1rem;
+}
+.banner a {
+  font-size: 1.4rem;
+}
+.banner svg {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.banner-highlight {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.banner-highlight::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: -5%;
+  right: -5%;
+  height: 1.2em;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transform: rotate(-1deg);
+}
+
+.banner-highlight-guides::before {
+  background-color: #45d182;
+  transform: rotate(-2deg);
+}
+
+.banner-highlight-news::before {
+  background-color: #ff6b6b;
+  transform: rotate(1deg);
+}
+
+.banner-highlight-projets::before {
+  background-color: #ffc93c;
+  transform: rotate(-3deg);
+}
+
+.banner-highlighted-word {
+  border: 2px solid black;
+  border-radius: 18px;
+  padding: 5px;
+}
+
+.banner > h3 > span:nth-child(5) {
+  background-color: #ffc93c;
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    font-size: 0.8rem;
+  }
+  .banner img {
+    width: 300px;
+  }
+}
+
+@media (max-width: 375px) {
+  .banner img {
+    display: none;
+  }
+}
