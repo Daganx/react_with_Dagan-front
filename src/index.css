@@ -16,9 +16,7 @@ html {
   background-color: var(--primary-background-color);
 
   --primary-background-color: rgb(245, 245, 245);
-  --secondary-background-color: ;
   --heading-color: #cf2839;
-  --secondary-color: ;
 }
 @font-face {
   font-family: "main-font";
