@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Créer une instance d'Axios avec la configuration de base
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5001/api", // URL de base du backend
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5001/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -11,9 +11,9 @@ const axiosInstance = axios.create({
 // Intercepteur pour ajouter le token à chaque requête
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token"); // Récupérer le token du localStorage
+    const token = localStorage.getItem("token");
     if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`; // Ajouter le token dans l'en-tête
+      config.headers["Authorization"] = `Bearer ${token}`;
     }
     return config;
   },
