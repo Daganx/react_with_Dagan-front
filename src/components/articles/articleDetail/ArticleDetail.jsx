@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getPublicArticle } from "../../../services/publicArticleService";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import "./articleDetail.css";
 
 export default function ArticleDetail() {
@@ -83,9 +85,9 @@ export default function ArticleDetail() {
 
         <div className="article-text-details">
           <p>{article.introduction}</p>
-          {article.content.split("\n").map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            {article.content}
+          </ReactMarkdown>
         </div>
       </article>
     </div>

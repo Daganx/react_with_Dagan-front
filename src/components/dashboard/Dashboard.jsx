@@ -5,7 +5,16 @@ import {
   createArticle,
   updateArticle,
 } from "../../services/articleService";
+import ReactMarkdown from "react-markdown";
+import MarkdownEditor from "react-markdown-editor-lite";
+import "react-markdown-editor-lite/lib/index.css";
+import MarkdownIt from "markdown-it";
+import rehypeRaw from "rehype-raw";
 import "./dashboard.css";
+import SimpleMDE from "react-simplemde-editor";
+import "simplemde/dist/simplemde.min.css";
+
+const mdParser = new MarkdownIt();
 
 export default function Dashboard() {
   const [articles, setArticles] = useState([]);
@@ -15,6 +24,7 @@ export default function Dashboard() {
     content: "",
     images: null,
     category: "",
+    color: "#000000",
   });
   const [editingArticle, setEditingArticle] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -49,6 +59,7 @@ export default function Dashboard() {
         content: "",
         images: null,
         category: "",
+        color: "#000000",
       }); // Réinitialise les champs du formulaire
     } catch (error) {
       console.error("Error creating article", error);
@@ -116,6 +127,20 @@ export default function Dashboard() {
     }));
   };
 
+  const handleColorChange = (event) => {
+    setNewArticle({ ...newArticle, color: event.target.value });
+  };
+
+  const applyColor = () => {
+    const { content, color } = newArticle;
+    const selectedText = window.getSelection().toString();
+    if (selectedText) {
+      const coloredText = `<span style="color: ${color};">${selectedText}</span>`;
+      const newContent = content.replace(selectedText, coloredText);
+      setNewArticle({ ...newArticle, content: newContent });
+    }
+  };
+
   return (
     <div>
       <h1 className="dashboard-title">Dashboard</h1>
@@ -158,14 +183,13 @@ export default function Dashboard() {
           <label htmlFor="content" className="dashboard-label">
             Content
           </label>
-          <textarea
-            id="content"
+          <MarkdownEditor
             value={newArticle.content}
-            onChange={(e) =>
-              setNewArticle({ ...newArticle, content: e.target.value })
+            style={{ height: "300px" }}
+            renderHTML={(text) => mdParser.render(text)}
+            onChange={({ text }) =>
+              setNewArticle({ ...newArticle, content: text })
             }
-            placeholder="Enter content"
-            className="dashboard-textarea"
           />
         </div>
 
@@ -204,12 +228,24 @@ export default function Dashboard() {
             className="dashboard-file-input"
           />
         </div>
+
+        <div>
+          <label htmlFor="colorPicker">Choose Text Color:</label>
+          <input
+            type="color"
+            id="colorPicker"
+            value={newArticle.color}
+            onChange={handleColorChange}
+          />
+          <button onClick={applyColor}>Apply Color</button>
+        </div>
+
         <button type="submit" disabled={loading} className="dashboard-button">
           {loading ? "Creating..." : "Create Article"}
         </button>
       </form>
 
-      {/* Formulaire de mise à jour d'article (si un article est en cours d'édition) */}
+      {/* Formulaire de mise à jour d'article (si un article est en cours d'dition) */}
       {editingArticle && (
         <div>
           <h2>Update Article</h2>
@@ -245,13 +281,12 @@ export default function Dashboard() {
 
             <div>
               <label htmlFor="content">Content</label>
-              <textarea
-                id="content"
+              <SimpleMDE
                 value={editingArticle.content}
-                onChange={(e) =>
+                onChange={(value) =>
                   setEditingArticle({
                     ...editingArticle,
-                    content: e.target.value,
+                    content: value,
                   })
                 }
               />
@@ -341,7 +376,9 @@ export default function Dashboard() {
           <div key={article._id} className="dashboard-article-card">
             <h3>{article.title}</h3>
             <p>{article.introduction}</p>
-            <p>{article.content}</p>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+              {article.content}
+            </ReactMarkdown>
             {article.images &&
               article.images.map((image, index) => (
                 <img
