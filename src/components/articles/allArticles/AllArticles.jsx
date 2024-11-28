@@ -52,7 +52,6 @@ export default function AllArticles() {
                 : ""}
               ...
             </p>{" "}
-            {/* Ajout de l'introduction */}
             <p className="article-date">
               Publié le{" "}
               {new Date(article.createdAt).toLocaleDateString("fr-FR")}
