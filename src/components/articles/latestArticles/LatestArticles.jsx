@@ -48,8 +48,7 @@ export default function ArticlesList() {
                 <p>{article.category}</p>
               </div>
               <h2>{article.title}</h2>
-              <p>{article.introduction}</p>
-              <p>{article.content.substring(0, 200)}...</p>
+              <p>{article.introduction ? article.introduction.substring(0, 100) : ''}...</p>
               <div className="article-footer">
                 <span className="article-date">
                   {new Date(article.createdAt).toLocaleDateString("fr-FR")}

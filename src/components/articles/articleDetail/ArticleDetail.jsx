@@ -82,6 +82,7 @@ export default function ArticleDetail() {
         )}
 
         <div className="article-text-details">
+          <p>{article.introduction}</p>
           {article.content.split("\n").map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}

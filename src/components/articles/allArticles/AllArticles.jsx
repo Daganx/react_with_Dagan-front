@@ -15,10 +15,10 @@ export default function AllArticles() {
       try {
         const data = await getPublicArticles();
         setArticles(data);
-      // eslint-disable-next-line no-unused-vars
+        setLoading(false);
+        // eslint-disable-next-line no-unused-vars
       } catch (err) {
         setError("Impossible de charger les articles");
-      } finally {
         setLoading(false);
       }
     };
@@ -31,21 +31,31 @@ export default function AllArticles() {
 
   return (
     <section className="all-articles-container">
-      {articles.map(({ _id, images, title, content, category, createdAt }) => (
-        <article key={_id} className="all-articles-article-card">
-          <Link to={`/article/${_id}`} className="all-articles-article-link">
-            {images?.length > 0 && (
+      {articles.map((article) => (
+        <article key={article._id} className="all-articles-article-card">
+          <Link
+            to={`/article/${article._id}`}
+            className="all-articles-article-link"
+          >
+            {article.images && article.images.length > 0 && (
               <img
-                src={images[0]}
-                alt={title}
+                src={article.images[0]}
+                alt={article.title}
                 className="all-articles-article-image"
               />
             )}
-            <p className="all-articles-article-category">{category}</p>
-            <h2>{title}</h2>
-            <p>{content.substring(0, 100)}...</p>
+            <p className="all-articles-article-category">{article.category}</p>
+            <h2>{article.title}</h2>
+            <p>
+              {article.introduction
+                ? article.introduction.substring(0, 100)
+                : ""}
+              ...
+            </p>{" "}
+            {/* Ajout de l'introduction */}
             <p className="article-date">
-              Publié le {new Date(createdAt).toLocaleDateString("fr-FR")}
+              Publié le{" "}
+              {new Date(article.createdAt).toLocaleDateString("fr-FR")}
             </p>
           </Link>
         </article>
