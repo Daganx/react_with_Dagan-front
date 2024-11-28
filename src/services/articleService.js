@@ -15,6 +15,7 @@ export const createArticle = async (article) => {
   try {
     const formData = new FormData();
     formData.append("title", article.title);
+    formData.append("introduction", article.introduction);
     formData.append("content", article.content);
     formData.append("category", article.category);
     if (article.images) {
@@ -44,6 +45,7 @@ export const updateArticle = async (id, article) => {
     }
 
     formData.append("title", article.title);
+    formData.append("introduction", article.introduction);
     formData.append("content", article.content);
     formData.append("category", article.category);
 

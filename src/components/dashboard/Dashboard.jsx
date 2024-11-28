@@ -11,6 +11,7 @@ export default function Dashboard() {
   const [articles, setArticles] = useState([]);
   const [newArticle, setNewArticle] = useState({
     title: "",
+    introduction: "",
     content: "",
     images: null,
     category: "",
@@ -40,7 +41,13 @@ export default function Dashboard() {
       setLoading(true);
       const createdArticle = await createArticle(newArticle); // Appel de la fonction createArticle
       setArticles((prev) => [createdArticle, ...prev]); // Ajoute le nouvel article au début de la liste
-      setNewArticle({ title: "", content: "", images: null, category: "" }); // Réinitialise les champs du formulaire
+      setNewArticle({
+        title: "",
+        introduction: "",
+        content: "",
+        images: null,
+        category: "",
+      }); // Réinitialise les champs du formulaire
     } catch (error) {
       console.error("Error creating article", error);
     } finally {
@@ -54,6 +61,7 @@ export default function Dashboard() {
 
     if (
       !editingArticle.title ||
+      !editingArticle.introduction ||
       !editingArticle.content ||
       !editingArticle.category
     ) {
@@ -65,6 +73,7 @@ export default function Dashboard() {
       setLoading(true);
       const result = await updateArticle(editingArticle._id, {
         title: editingArticle.title,
+        introduction: editingArticle.introduction,
         content: editingArticle.content,
         images: editingArticle.images,
         newImages: editingArticle.newImages,
@@ -127,6 +136,22 @@ export default function Dashboard() {
             className="dashboard-input"
           />
         </div>
+
+        <div className="dashboard-form-group">
+          <label htmlFor="introduction" className="dashboard-label">
+            Introduction
+          </label>
+          <textarea
+            id="introduction"
+            value={newArticle.introduction} // Ajout de l'introduction
+            onChange={(e) =>
+              setNewArticle({ ...newArticle, introduction: e.target.value })
+            }
+            placeholder="Enter introduction"
+            className="dashboard-textarea"
+          />
+        </div>
+
         <div className="dashboard-form-group">
           <label htmlFor="content" className="dashboard-label">
             Content
@@ -141,6 +166,7 @@ export default function Dashboard() {
             className="dashboard-textarea"
           />
         </div>
+
         <div className="dashboard-form-group">
           <label htmlFor="category" className="dashboard-label">
             Category
@@ -160,6 +186,7 @@ export default function Dashboard() {
             <option value="Projects">Projects</option>
           </select>
         </div>
+
         <div className="dashboard-form-group">
           <label htmlFor="images" className="dashboard-label">
             Images
@@ -199,6 +226,21 @@ export default function Dashboard() {
                 }
               />
             </div>
+
+            <div>
+              <label htmlFor="introduction">Introduction</label>
+              <textarea
+                id="introduction"
+                value={editingArticle.introduction}
+                onChange={(e) =>
+                  setEditingArticle({
+                    ...editingArticle,
+                    introduction: e.target.value,
+                  })
+                }
+              />
+            </div>
+
             <div>
               <label htmlFor="content">Content</label>
               <textarea
@@ -296,6 +338,7 @@ export default function Dashboard() {
         {articles.map((article) => (
           <div key={article._id} className="dashboard-article-card">
             <h3>{article.title}</h3>
+            <p>{article.introduction}</p>
             <p>{article.content}</p>
             {article.images &&
               article.images.map((image, index) => (
