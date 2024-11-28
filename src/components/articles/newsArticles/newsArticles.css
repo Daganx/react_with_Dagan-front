@@ -38,12 +38,18 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.news-article-category {
+  text-align: right;
+}
 
 .news-article-category p {
   background-color: #e4c087;
   display: inline-flex;
   padding: 8px;
   border-radius: 30px;
+}
+.news-article-content > p {
+  margin: 1rem;
 }
 
 .article-footer {
