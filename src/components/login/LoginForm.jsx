@@ -12,7 +12,7 @@ export default function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axiosInstance.post("/auth/login", {
+      const { data } = await axiosInstance.post("/admin/login", {
         email,
         password,
       });
