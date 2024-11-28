@@ -18,9 +18,7 @@ export default function ArticleDetail() {
       try {
         const data = await getPublicArticle(id);
         setArticle(data);
-        if (data.images && data.images.length > 0) {
-          setSelectedImage(data.images[0]);
-        }
+        setSelectedImage(data.images?.[0] || null);
         // eslint-disable-next-line no-unused-vars
       } catch (err) {
         setError("Impossible de charger l'article");
@@ -44,7 +42,7 @@ export default function ArticleDetail() {
           width="50"
           height="50"
           src="https://img.icons8.com/ios-filled/50/circled-left-2.png"
-          alt="circled-left-2"
+          alt="Retour"
         />
       </button>
 
@@ -55,7 +53,7 @@ export default function ArticleDetail() {
           Publié le {new Date(article.createdAt).toLocaleDateString("fr-FR")}
         </div>
 
-        {article.images && article.images.length > 0 && (
+        {article.images?.length > 0 && (
           <div className="article-image-details">
             <div className="article-image-container">
               <img

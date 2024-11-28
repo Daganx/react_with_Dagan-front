@@ -37,6 +37,8 @@ export default function Dashboard() {
       return;
     }
 
+    console.log("Données envoyées pour la création de l'article :", newArticle);
+
     try {
       setLoading(true);
       const createdArticle = await createArticle(newArticle); // Appel de la fonction createArticle
