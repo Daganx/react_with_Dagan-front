@@ -12,7 +12,7 @@ import MarkdownIt from "markdown-it";
 import rehypeRaw from "rehype-raw";
 import "./dashboard.css";
 
-const mdParser = new MarkdownIt();
+const mdParser = new MarkdownIt({ html: true });
 
 export default function Dashboard() {
   const [articles, setArticles] = useState([]);
@@ -284,7 +284,7 @@ export default function Dashboard() {
                 style={{ height: "300px" }}
                 renderHTML={(text) => mdParser.render(text)}
                 onChange={({ text }) => {
-                  if (typeof text === 'string') {
+                  if (typeof text === "string") {
                     setEditingArticle({ ...editingArticle, content: text });
                   }
                 }}
