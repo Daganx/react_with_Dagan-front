@@ -280,7 +280,7 @@ export default function Dashboard() {
             <div>
               <label htmlFor="content">Content</label>
               <MarkdownEditor
-                value={editingArticle.content}
+                value={editingArticle.content || ""}
                 onChange={(value) =>
                   setEditingArticle({
                     ...editingArticle,
