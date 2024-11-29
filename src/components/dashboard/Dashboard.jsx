@@ -6,13 +6,11 @@ import {
   updateArticle,
 } from "../../services/articleService";
 import ReactMarkdown from "react-markdown";
-import MarkdownEditor from "react-markdown-editor-lite"; 
-import "react-markdown-editor-lite/lib/index.css"; 
-import MarkdownIt from "markdown-it"; 
-import rehypeRaw from "rehype-raw"; 
+import MarkdownEditor from "react-markdown-editor-lite";
+import "react-markdown-editor-lite/lib/index.css";
+import MarkdownIt from "markdown-it";
+import rehypeRaw from "rehype-raw";
 import "./dashboard.css";
-import SimpleMDE from "react-simplemde-editor"; 
-import "simplemde/dist/simplemde.min.css"; 
 
 const mdParser = new MarkdownIt();
 
@@ -281,7 +279,7 @@ export default function Dashboard() {
 
             <div>
               <label htmlFor="content">Content</label>
-              <SimpleMDE
+              <MarkdownEditor
                 value={editingArticle.content}
                 onChange={(value) =>
                   setEditingArticle({
