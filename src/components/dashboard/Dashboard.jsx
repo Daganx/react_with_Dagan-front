@@ -281,12 +281,13 @@ export default function Dashboard() {
               <label htmlFor="content">Content</label>
               <MarkdownEditor
                 value={editingArticle.content || ""}
-                onChange={(value) =>
-                  setEditingArticle({
-                    ...editingArticle,
-                    content: value,
-                  })
-                }
+                style={{ height: "300px" }}
+                renderHTML={(text) => mdParser.render(text)}
+                onChange={({ text }) => {
+                  if (typeof text === 'string') {
+                    setEditingArticle({ ...editingArticle, content: text });
+                  }
+                }}
               />
             </div>
             <div>
