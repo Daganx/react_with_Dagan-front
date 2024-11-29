@@ -114,6 +114,9 @@
   .article-card:nth-child(3) {
     grid-column: span 1;
   }
+  #root > section.articles-container > article:nth-child(1) > a > div > p{
+    font-size: 1rem;
+  }
 }
 @media (max-width: 768px) {
   .articles-container {
