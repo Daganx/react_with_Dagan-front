@@ -50,7 +50,7 @@ export default function NewsArticles() {
               <h2>{article.title}</h2>
               <p>
                 {article.introduction
-                  ? article.introduction.substring(0, 200)
+                  ? article.introduction.substring(0, 150)
                   : ""}
                 ...
               </p>{" "}
