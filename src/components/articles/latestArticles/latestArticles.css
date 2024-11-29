@@ -24,6 +24,17 @@
 .articles-container > article:nth-child(1) > a > div.article-content p {
   color: rgb(250, 250, 250);
   margin: 1rem;
+  font-size: 1.6rem;
+}
+#root
+  > section.articles-container
+  > article:nth-child(1)
+  > a
+  > div
+  > div.article-category
+  > p {
+  font-size: 1rem;
+  color: #000;
 }
 .article-link {
   text-decoration: none;
@@ -48,10 +59,10 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.article-content p{
+.article-content p {
   margin: 1rem;
 }
-.article-category{
+.article-category {
   text-align: right;
 }
 .article-category p {
@@ -59,12 +70,13 @@
   display: inline-flex;
   padding: 8px;
   border-radius: 30px;
+  margin: 0;
 }
 .article-content h2 {
   font-size: 1.8rem;
 }
 .article-date {
-  background-color: white;
+  background-color: rgb(250, 250, 250);
   padding: 5px 10px;
   border-radius: 4px;
   font-size: 0.8rem;
