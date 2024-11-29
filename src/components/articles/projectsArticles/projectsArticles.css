@@ -36,15 +36,6 @@
 .projects-article-content > p {
   margin: 1rem;
 }
-.projects-article-category {
-  text-align: right;
-}
-.projects-article-category p {
-  background-color: #e4c087;
-  display: inline-flex;
-  padding: 8px;
-  border-radius: 30px;
-}
 @media (max-width: 1024px) {
   .projects-articles-container {
     grid-template-columns: repeat(2, 1fr);

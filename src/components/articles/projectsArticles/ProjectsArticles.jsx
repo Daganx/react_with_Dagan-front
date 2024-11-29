@@ -49,9 +49,6 @@ export default function ProjectsArticle() {
               />
             )}
             <div className="projects-article-content">
-              <div className="projects-article-category">
-                <p>{article.category}</p>
-              </div>
               <h2>{article.title}</h2>
               <p>
                 {article.introduction
@@ -63,6 +60,7 @@ export default function ProjectsArticle() {
                 <span className="article-date">
                   {new Date(article.createdAt).toLocaleDateString("fr-FR")}
                 </span>
+                <span>{article.category}</span>
               </div>
             </div>
           </Link>

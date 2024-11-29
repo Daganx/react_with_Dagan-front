@@ -46,15 +46,18 @@ export default function GuidesArticles() {
               />
             )}
             <div className="guides-article-content">
-              <div className="guides-article-category">
-                <p>{article.category}</p>
-              </div>
               <h2>{article.title}</h2>
-              <p>{article.introduction ? article.introduction.substring(0, 150) : ''}...</p>
+              <p>
+                {article.introduction
+                  ? article.introduction.substring(0, 150)
+                  : ""}
+                ...
+              </p>
               <div className="article-footer">
                 <span className="article-date">
                   {new Date(article.createdAt).toLocaleDateString("fr-FR")}
                 </span>
+                <span>{article.category}</span>
               </div>
             </div>
           </Link>
