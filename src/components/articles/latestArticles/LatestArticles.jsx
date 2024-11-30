@@ -55,8 +55,8 @@ export default function ArticlesList() {
                 <span className="article-date">
                   {new Date(article.createdAt).toLocaleDateString("fr-FR")}
                 </span>
-                <span>{article.category}</span>
               </div>
+              <span>{article.category}</span>
             </div>
           </Link>
         </article>

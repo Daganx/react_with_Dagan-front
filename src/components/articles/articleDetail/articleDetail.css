@@ -70,3 +70,9 @@
   list-style: disc;
   list-style-type: disc;
 }
+@media (max-width: 1024px) {
+  .article-text-details{
+    font-size: 1.5rem;
+    text-align: justify;
+  }
+}

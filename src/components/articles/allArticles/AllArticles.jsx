@@ -44,7 +44,7 @@ export default function AllArticles() {
                 className="all-articles-article-image"
               />
             )}
-            <p className="all-articles-article-category">{article.category}</p>
+            
             <h2>{article.title}</h2>
             <p>
               {article.introduction
@@ -56,6 +56,7 @@ export default function AllArticles() {
               Publié le{" "}
               {new Date(article.createdAt).toLocaleDateString("fr-FR")}
             </p>
+            <p className="all-articles-article-category">{article.category}</p>
           </Link>
         </article>
       ))}

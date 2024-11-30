@@ -31,22 +31,16 @@
   line-height: 1.5;
   margin: 1rem;
 }
-.all-articles-article-category {
-  background-color: #ffc93c;
-  display: inline-flex;
-  padding: 8px;
-  border-radius: 30px;
-}
 .article-date{
   background-color: #f5f5f5;
 }
 @media (max-width: 1024px) {
-  .all-articles-all-articles-container {
+  .all-articles-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 768px) {
-  .all-articles-all-articles-container {
+  .all-articles-container {
     grid-template-columns: 1fr;
   }
 }
