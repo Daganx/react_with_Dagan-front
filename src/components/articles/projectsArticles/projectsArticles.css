@@ -31,6 +31,9 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.projects-article-content h2 {
+  font-size: 1.4rem;
+}
 .projects-article-content > p {
   margin: 1rem;
 }
