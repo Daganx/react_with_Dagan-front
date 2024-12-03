@@ -7,7 +7,6 @@
 .projects-article-card {
   display: flex;
   flex-direction: column;
-  height: 550px;
   background: inherit;
   border-radius: 18px;
   overflow: hidden;
@@ -22,7 +21,6 @@
   position: relative;
 }
 .projects-article-image {
-  height: 40%;
   overflow: hidden;
   object-fit: cover;
 }
