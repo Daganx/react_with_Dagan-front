@@ -61,13 +61,13 @@
   padding-left: 4rem;
   padding-right: 4rem;
   padding-bottom: 2rem;
-  text-align: justify;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.article-text-details img{
+.article-text-details img {
   width: 100%;
 }
 .article-text-details li {
@@ -75,7 +75,7 @@
   list-style-type: disc;
 }
 @media (max-width: 1024px) {
-  .article-text-details{
+  .article-text-details {
     font-size: 1.5rem;
     text-align: justify;
   }
