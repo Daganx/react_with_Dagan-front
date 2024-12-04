@@ -1,4 +1,3 @@
-import BannerLogo from "../../assets/images/banner/ReactWithDaganBanner.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
@@ -10,7 +9,6 @@ import "./banner.css";
 export default function Banner() {
   return (
     <section className="banner">
-      <img src={BannerLogo} alt="Logo de ReactWithDagan"></img>
       <div className="banner-socials">
         <a
           href="https://www.github.com/daganx/"
